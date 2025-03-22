@@ -106,59 +106,55 @@
             margin-top: 10px;
         }
 
-        /* Calendar Popup Styles */
+        /* Styling for the calendar popup */
         .calendar-popup {
             display: none;
+            background-color: white;
             position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background-color: #4c4c4c;
-            color: #929292;
             padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-            width: 80%;
-            max-width: 600px;
-            text-align: center;
-            overflow-y: auto;
-            max-height: 400px; /* Limit the height of the pop-up */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            max-width: 300px;
         }
 
-        .date-list {
-            list-style: none;
+        .calendar-popup ul {
+            list-style-type: none;
             padding: 0;
             margin: 0;
-            max-height: 300px;
-            overflow-y: auto; /* Enable scrolling if list is too long */
         }
 
-        .date-list li {
+        .calendar-popup li {
             padding: 10px;
             cursor: pointer;
-            border-bottom: 1px solid #929292;
-            text-align: center;
+            border-bottom: 1px solid #eee;
         }
 
-        .date-list li:hover {
-            background-color: #5c5c5c;
+        .calendar-popup li:hover {
+            background-color: #f0f0f0;
         }
 
-        /* Common button styles for both buttons */
-        button {
-            background-color: #929292;  /* Set to match font color */
-            color: #4c4c4c;  /* Set text color to contrast */
+        .calendar-popup button {
+            background-color: #929292;
+            color: white;
+            padding: 10px 15px;
             border: none;
-            padding: 12px 30px;
-            cursor: pointer;
             border-radius: 5px;
-            font-size: 18px;
-            margin: 10px;
-            transition: background-color 0.3s ease;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            margin-top: 10px;
         }
 
-        button:hover {
-            background-color: #7a7a7a;
+        .calendar-popup button:hover {
+            background-color: #777;
+        }
+
+        .calendar-popup .close-button {
+            background-color: #929292;
         }
 
     </style>
@@ -167,12 +163,16 @@
 
     <header>
         <h1>Just Married<br>Kalpana and Anand</h1>
-        <p class="header-description">1965-2025<br><br>
+        <p class="header-description">1965-2025
+         <br>
+        <br>
         Every alternate weekend, from April 1962 to 1965, Anand Mathur boarded a train from Jamalpur to Kolkata, bound for a date with Kalpana. Miles melted beneath the wheels, and time stood still in those moments they carved out for each other.
         </p>
     </header>
 
     <div class="video-container">
+
+        <!-- Image 1 -->
         <div class="video-item">
             <img src="IMG_4270.png" alt="Hiranya Garbha" class="poster" onclick="toggleDescription(0)">
             <div class="video-caption">
@@ -187,15 +187,14 @@
                 <br>
                 <br>
                 Please arrange a date with them, just as they did with each other from 1962 to 1965.
-                <br>The calendar below is open, and we would love for you to bring a letter, a note, or a memory that celebrates your moments with them—moments that began on the tracks of time and have flown through the past six decades.
+                <br>
+                The calendar below is open, and we would love for you to bring a letter, a note, or a memory that celebrates your moments with them—
+                moments that began on the tracks of time and have flown through the past six decades.
             </p>
+            <p>Calendar</p>
             <button onclick="openCalendar()">View Available Dates</button>
         </div>
     </div>
-
-    <footer>
-        <p> </p>
-    </footer>
 
     <!-- Calendar Pop-up -->
     <div id="calendar-popup" class="calendar-popup">
@@ -226,45 +225,30 @@
             <li onclick="submitDate('Sun, 12 Apr 2026 - London')">Sun, 12 Apr 2026 - London</li>
             <li onclick="submitDate('Sun, 26 Apr 2026 - London')">Sun, 26 Apr 2026 - London</li>
         </ul>
-        <button class="close-button" onclick="closeCalendar()">Close</button>
+        <button class="select-button" onclick="closeCalendar()">Select</button>
     </div>
 
+    <footer>
+        <p> </p>
+    </footer>
+
     <script>
+        // Open the calendar popup
         function openCalendar() {
-            document.getElementById("calendar-popup").style.display = "block";
+            document.getElementById('calendar-popup').style.display = 'block';
         }
 
+        // Close the calendar popup
         function closeCalendar() {
-            document.getElementById("calendar-popup").style.display = "none";
+            document.getElementById('calendar-popup').style.display = 'none';
         }
 
+        // Submit selected date
         function submitDate(date) {
-            alert("You have selected: " + date);
-            // Redirect to email
-            window.location.href = "mailto:example@example.com?subject=Date Selected: " + encodeURIComponent(date);
+            alert("You selected: " + date);
             closeCalendar();
+            document.querySelector('.select-button').innerText = "Select";
         }
-
-        function toggleDescription(index) {
-            const descriptions = document.querySelectorAll('.video-description');
-            descriptions.forEach((desc, i) => {
-                if (i === index) {
-                    desc.style.display = (desc.style.display === 'block') ? 'none' : 'block';
-                } else {
-                    desc.style.display = 'none';
-                }
-            });
-        }
-
-        // Add event listeners for descriptions
-        document.addEventListener('DOMContentLoaded', () => {
-            const descriptions = document.querySelectorAll('.video-description');
-            descriptions.forEach((desc, index) => {
-                desc.addEventListener('click', () => {
-                    desc.style.display = 'none';
-                });
-            });
-        });
     </script>
 </body>
 </html>
