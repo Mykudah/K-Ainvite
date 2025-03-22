@@ -121,11 +121,16 @@
             width: 80%;
             max-width: 600px;
             text-align: center;
+            overflow-y: auto;
+            max-height: 400px; /* Limit the height of the pop-up */
         }
 
         .date-list {
             list-style: none;
             padding: 0;
+            margin: 0;
+            max-height: 300px;
+            overflow-y: auto; /* Enable scrolling if list is too long */
         }
 
         .date-list li {
