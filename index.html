@@ -145,17 +145,18 @@
         }
 
         .close-button {
-            background-color: transparent;
-            color: #929292;
-            border: 1px solid #929292;
-            padding: 5px 10px;
-            margin-top: 10px;
+            background-color: #929292;  /* Set to match font color */
+            color: #4c4c4c;  /* Set text color to contrast */
+            border: none;
+            padding: 12px 30px;
+            margin-top: 20px;
             cursor: pointer;
             border-radius: 5px;
+            font-size: 18px;
         }
 
         .close-button:hover {
-            background-color: #6c6c6c;
+            background-color: #7a7a7a;
         }
 
     </style>
@@ -237,6 +238,8 @@
 
         function submitDate(date) {
             alert("You have selected: " + date);
+            // Redirect to email
+            window.location.href = "mailto:example@example.com?subject=Date Selected: " + encodeURIComponent(date);
             closeCalendar();
         }
 
