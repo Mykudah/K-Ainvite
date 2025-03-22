@@ -1,1 +1,184 @@
+!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shivani Mathur - Pathways</title>
+    <style>
+        body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+    background-color: #4c4c4c;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+}
 
+.page-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+header, footer {
+    background-color: #4c4c4c;
+    color: #929292;
+    text-align: center;
+    padding: 10px;
+}
+
+h1 {
+    text-align: center;
+}
+
+.header-description {
+    margin-top: 10px;
+    color: #929292;
+}
+
+.video-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.video-item {
+    margin-bottom: 30px;
+    text-align: center;  /* Ensure video container aligns with text */
+}
+
+.poster, .video-item img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+video {
+    width: 100%;
+    height: auto;
+    display: block;
+    max-width: 100%; /* Ensure video stays within the container width */
+}
+
+video[poster] {
+    width: 100%;  /* Make the poster fill the video container */
+    height: 300px; /* Set a fixed height for poster image */
+    object-fit: cover; /* This will crop and fill the poster nicely */
+    border-radius: 5px;
+    margin: 0 auto;
+}
+
+.video-caption {
+    font-size: 18px;
+    margin-top: 10px;
+    text-align: center;
+    cursor: pointer;
+    background-color: #4c4c4c;
+    color: #929292;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.video-description {
+    display: none;
+    text-align: left;
+    padding: 10px;
+    border: 1px solid #4c4c4c;
+    background-color: #4c4c4c;
+    color: #929292;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+footer p {
+    margin: 10px 0;
+}
+
+footer p:last-child {
+    text-align: center;
+    color: #929292;
+}
+
+.more-info {
+    cursor: pointer;
+    color: #929292;
+    text-align: center;
+    background-color: #4c4c4c;
+    padding: 5px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <h1>Just Married  <br> Anand and Kalpana </h1>
+        <p class="header-description">  <br> 1965-2025</p>
+    </header>
+    <div class="video-container">
+        <!-- Image 1 -->
+        <div class="video-item">
+            <img src="image1.jpeg" alt="Hiranya Garbha" class="poster" onclick="toggleDescription(0)">
+            <div class="video-caption">
+                Image 1: 60x 60 cm<br>Pristine fields  <br>
+                <span class="more-info" onclick="toggleDescription(0)">More Info</span>
+            </div>
+            <div class="video-description" id="description-0">
+                <p></p>
+            </div>
+        </div>
+
+       
+
+        <!-- Video 1 -->
+        <div class="video-item">
+            <video poster="image1.jpeg" controls>
+                <source src="Vacuumprocess.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="video-caption">
+                Video 1: What lies beneath the landscape <br>
+                <span class="more-info" onclick="toggleDescription(3)">More Info</span>
+            </div>
+            <div class="video-description" id="description-3">
+                <p>This is a clay mould which is then embedded with eggs and subject to heat and vacuum   </p>
+            </div>
+        </div>
+
+        </div>
+    
+
+    <footer></footer>
+
+    <script>
+    // Toggle video descriptions
+    function toggleDescription(index) {
+        const descriptions = document.querySelectorAll('.video-description');
+        descriptions.forEach((desc, i) => {
+            if (i === index) {
+                // Toggle visibility of the selected description
+                desc.style.display = (desc.style.display === 'block') ? 'none' : 'block';
+            } else {
+                // Hide all other descriptions
+                desc.style.display = 'none';
+            }
+        });
+    }
+
+    // Add event listeners for descriptions
+    document.addEventListener('DOMContentLoaded', () => {
+        const descriptions = document.querySelectorAll('.video-description');
+        descriptions.forEach((desc, index) => {
+            desc.addEventListener('click', () => {
+                // Hide the description when it's clicked
+                desc.style.display = 'none';
+            });
+        });
+    });
+</script>
+
+</body>
+</html>
