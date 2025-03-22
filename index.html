@@ -119,12 +119,15 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             z-index: 1000;
             max-width: 300px;
+            width: 100%;
         }
 
         .calendar-popup ul {
             list-style-type: none;
             padding: 0;
             margin: 0;
+            max-height: 300px;
+            overflow-y: auto; /* Enables scrolling when the list exceeds the height */
         }
 
         .calendar-popup li {
@@ -137,11 +140,11 @@
             background-color: #f0f0f0;
         }
 
-        /* Styling for the Select button */
+        /* Styling for the buttons */
         .calendar-popup button {
             background-color: #929292;
             color: white;
-            padding: 15px 20px; /* increased padding for a larger button */
+            padding: 15px 20px; /* Ensuring button size is big enough */
             border: none;
             border-radius: 5px;
             cursor: pointer;
