@@ -61,8 +61,8 @@
             border-radius: 5px;
         }
 
-        .calendar-button, .submit-button {
-            background-color: #d4af37; /* Gold color */
+        .calendar-button {
+            background-color: #929292; /* Changed to font color */
             color: white;
             font-size: 18px;
             padding: 10px 20px;
@@ -86,10 +86,22 @@
             text-align: center;
         }
 
-        .calendar-popup select {
-            font-size: 16px;
-            padding: 5px;
-            margin: 10px;
+        .date-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .date-list li {
+            background-color: #929292; /* Match font color */
+            color: white;
+            padding: 10px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .date-list li:hover {
+            background-color: #777777;
         }
 
         .close-button {
@@ -138,18 +150,15 @@
     <!-- Calendar Pop-up -->
     <div id="calendar-popup" class="calendar-popup">
         <h3>Select a Date</h3>
-        <label for="event-date">Choose a date:</label>
-        <select id="event-date">
-            <option value="11 May 2025 (Gurgaon)">Sun, 11 May 2025 - Gurgaon</option>
-            <option value="25 May 2025 (Gurgaon)">Sun, 25 May 2025 - Gurgaon</option>
-            <option value="8 Jun 2025 (Gurgaon)">Sun, 8 Jun 2025 - Gurgaon</option>
-            <option value="22 Jun 2025 (Gurgaon)">Sun, 22 Jun 2025 - Gurgaon</option>
-            <option value="23 Nov 2025 (London)">Sun, 23 Nov 2025 - London</option>
-            <option value="7 Dec 2025 (London)">Sun, 7 Dec 2025 - London</option>
+        <ul class="date-list">
+            <li onclick="submitDate('Sun, 11 May 2025 - Gurgaon')">Sun, 11 May 2025 - Gurgaon</li>
+            <li onclick="submitDate('Sun, 25 May 2025 - Gurgaon')">Sun, 25 May 2025 - Gurgaon</li>
+            <li onclick="submitDate('Sun, 8 Jun 2025 - Gurgaon')">Sun, 8 Jun 2025 - Gurgaon</li>
+            <li onclick="submitDate('Sun, 22 Jun 2025 - Gurgaon')">Sun, 22 Jun 2025 - Gurgaon</li>
+            <li onclick="submitDate('Sun, 23 Nov 2025 - London')">Sun, 23 Nov 2025 - London</li>
+            <li onclick="submitDate('Sun, 7 Dec 2025 - London')">Sun, 7 Dec 2025 - London</li>
             <!-- Add more dates here -->
-        </select>
-        <br>
-        <button class="submit-button" onclick="submitDate()">Confirm Date</button>
+        </ul>
         <button class="close-button" onclick="closeCalendar()">Close</button>
     </div>
 
@@ -166,11 +175,10 @@
             document.getElementById("calendar-popup").style.display = "none";
         }
 
-        function submitDate() {
-            let selectedDate = document.getElementById("event-date").value;
+        function submitDate(date) {
             let email = "your-email@example.com";  // Replace with your email
             let subject = "Celebration Date Confirmation";
-            let body = `Hello,\n\nI would like to confirm my attendance on: ${selectedDate}.\n\nBest regards,`;
+            let body = `Hello,\n\nI would like to confirm my attendance on: ${date}.\n\nBest regards,`;
             
             // Opens email client
             window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
