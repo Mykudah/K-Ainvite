@@ -238,7 +238,7 @@
             <li onclick="submitDate('Sun, 12 Apr 2026 - London')">Sun, 12 Apr 2026 - London</li>
             <li onclick="submitDate('Sun, 26 Apr 2026 - London')">Sun, 26 Apr 2026 - London</li>
         </ul>
-        <button id="calendar-button" class="select-button" onclick="selectDate()">Select</button>
+        <button id="calendar-button" class="select-button" onclick="closeCalendar()">Close</button>
     </div>
 
     <footer>
@@ -258,16 +258,9 @@
 
         // Submit the selected date, send email with selected date
         function submitDate(date) {
-            document.getElementById('calendar-button').innerText = "Select";
             var email = "mailto:your-anandkalpana@gmail.com?subject=Selected%20Date&body=I%20would%20like%20to%20confirm%20the%20date:%20" + encodeURIComponent(date);
             window.location.href = email;
             closeCalendar();  // Close the popup after sending email
-        }
-
-        // Update button text to "Select"
-        function selectDate() {
-            document.getElementById('calendar-button').innerText = "close";
-            closeCalendar();
         }
     </script>
 
