@@ -192,10 +192,13 @@
             </div>
             <p>
                 This year, we celebrate the 60th anniversary of the day that ended those legendary dates and began a journey of lifetime love.
-                <br>
+                <br>  </p>
+                  <div class="video-item">
                 <img src="Wedding.gif" alt="Hiranya Garbha" class="poster" onclick="toggleDescription(0)">
-                <br>
-                <br>You are invited — to relive, to rejoice, and to share in the love that has carried them through six decades.
+               </div>
+               
+            <p>
+         You are invited — to relive, to rejoice, and to share in the love that has carried them through six decades.
                 <br>And yes, we are asking for a gift. 
                <br> The gift of your time.
                 <br>
@@ -259,7 +262,7 @@
 
         // Submit the selected date, send email with selected date
         function submitDate(date) {
-            var email = "mailto:your-kalpanaanandmathur@gmail.com?subject=Selected%20Date&body=I%20would%20like%20to%20confirm%20the%20date:%20" + encodeURIComponent(date);
+            var email = "mailto:kalpanaanandmathur@gmail.com?subject=Selected%20Date&body=I%20would%20like%20to%20confirm%20the%20date:%20" + encodeURIComponent(date);
             window.location.href = email;
             closeCalendar();  // Close the popup after sending email
         }
