@@ -62,14 +62,6 @@
             max-width: 100%;
         }
 
-        video[poster] {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-            border-radius: 5px;
-            margin: 0 auto;
-        }
-
         .video-caption {
             font-size: 18px;
             margin-top: 10px;
@@ -115,13 +107,13 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            padding: 30px;
+            padding: 30px; /* Increase padding for more internal space */
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             z-index: 1000;
-            max-width: 600px;
-            width: 90%;
-            min-height: 400px;
+            max-width: 600px; /* Increase max-width */
+            width: 90%; /* Set a percentage to make it responsive */
+            min-height: 400px; /* Optional - add a minimum height */
         }
 
         .calendar-popup ul {
@@ -129,7 +121,7 @@
             padding: 0;
             margin: 0;
             max-height: 300px;
-            overflow-y: auto;
+            overflow-y: auto; /* Enables scrolling when the list exceeds the height */
         }
 
         .calendar-popup li {
@@ -143,10 +135,10 @@
         }
 
         button {
-            background-color: #929292;
-            color: white;
-            padding: 15px 25px;
-            font-size: 20px;
+            background-color: #929292; /* Button color */
+            color: white; /* Text color */
+            padding: 15px 25px; /* Increase padding to make it bigger */
+            font-size: 20px; /* Increase font size if necessary */
             border: none;
             border-radius: 5px;
             cursor: pointer;
@@ -157,7 +149,7 @@
         .calendar-popup button {
             background-color: #929292;
             color: white;
-            padding: 15px 20px;
+            padding: 15px 20px; /* Ensuring button size is big enough */
             border: none;
             border-radius: 5px;
             cursor: pointer;
@@ -175,8 +167,9 @@
         }
 
         .calendar-popup {
-            overflow-y: auto;
+            overflow-y: auto; /* Add vertical scrolling */
         }
+
     </style>
 </head>
 <body>
@@ -208,11 +201,11 @@
                 <br>
                 Please arrange a date with them, just as they did with each other from 1962 to 1965.
                 <br>
-                 We would love for you to select a date below and bring a letter, a note, or a memory with them which you cherish—
+                We would love for you to select a date below and bring a letter, a note, or a memory with them which you cherish—
                 moments that began on the tracks of time and have flown through the past six decades.
             </p>
           
-            <button id="calendar-button" onclick="openCalendar()">Select a date above</button>
+            <button onclick="openCalendar()">View Available Dates</button>
         </div>
     </div>
 
@@ -231,7 +224,7 @@
             <li onclick="submitDate('Sun, 31 Aug 2025 - Gurgaon')">Sun, 31 Aug 2025 - Gurgaon</li>
             <li onclick="submitDate('Sun, 14 Sep 2025 - Gurgaon')">Sun, 14 Sep 2025 - Gurgaon</li>
             <li onclick="submitDate('Sun, 28 Sep 2025 - Gurgaon')">Sun, 28 Sep 2025 - Gurgaon</li>
-            <li onclick="submitDate('Sun, 9 Nov 2025 - Gurgaon')">Sun, 9 Nov 2025 - Gurgaon</li>
+            <li onclick="submitDate('Sun, 9 Nov 2025 - London')">Sun, 9 Nov 2025 - London</li>
             <li onclick="submitDate('Sun, 23 Nov 2025 - London')">Sun, 23 Nov 2025 - London</li>
             <li onclick="submitDate('Sun, 7 Dec 2025 - London')">Sun, 7 Dec 2025 - London</li>
             <li onclick="submitDate('Sun, 21 Dec 2025 - London')">Sun, 21 Dec 2025 - London</li>
@@ -246,7 +239,6 @@
             <li onclick="submitDate('Sun, 26 Apr 2026 - London')">Sun, 26 Apr 2026 - London</li>
         </ul>
         <button id="calendar-button" class="select-button" onclick="selectDate()">Select</button>
-        <button class="close-button" onclick="closeCalendar()">Close</button>
     </div>
 
     <footer>
@@ -257,50 +249,26 @@
         // Open the calendar popup
         function openCalendar() {
             document.getElementById('calendar-popup').style.display = 'block';
-            document.getElementById('calendar-button').innerText = 'Select a date above';
         }
 
-             // Close the calendar popup
+        // Close the calendar popup
         function closeCalendar() {
             document.getElementById('calendar-popup').style.display = 'none';
         }
 
-        // Function to submit the selected date
+        // Submit the selected date, send email with selected date
         function submitDate(date) {
-            const selectedDate = date;
-            alert("You have selected: " + selectedDate);
-            closeCalendar();  // Close the popup after selecting the date
+            document.getElementById('calendar-button').innerText = "Select";
+            var email = "mailto:your-anandkalpana@gmail.com?subject=Selected%20Date&body=I%20would%20like%20to%20confirm%20the%20date:%20" + encodeURIComponent(date);
+            window.location.href = email;
+            closeCalendar();  // Close the popup after sending email
         }
 
-        // Function to select the date from the list
+        // Update button text to "Select"
         function selectDate() {
-            const selectedDate = document.querySelector('.selected-date');
-            if (selectedDate) {
-                alert("You have selected: " + selectedDate.innerText);
-            } else {
-                alert("Please select a date first.");
-            }
+            document.getElementById('calendar-button').innerText = "close";
             closeCalendar();
         }
-
-        // Handle the video description toggling (you can modify this function based on how you want to handle descriptions)
-        function toggleDescription(index) {
-            const descriptions = document.getElementsByClassName('video-description');
-            for (let i = 0; i < descriptions.length; i++) {
-                if (i === index) {
-                    descriptions[i].style.display = descriptions[i].style.display === 'none' ? 'block' : 'none';
-                } else {
-                    descriptions[i].style.display = 'none';
-                }
-            }
-        }
-
-        // Event listener for selecting the date
-        document.querySelectorAll('.date-list li').forEach(function(item) {
-            item.addEventListener('click', function() {
-                item.classList.toggle('selected-date');
-            });
-        });
     </script>
 
 </body>
