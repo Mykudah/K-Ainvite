@@ -107,21 +107,22 @@
         }
 
         /* Styling for the calendar popup */
-        .calendar-popup {
-            display: none;
-            background-color: #4c4c4c;
-            color: #929292;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            z-index: 1000;
-            max-width: 300px;
-            width: 100%;
-        }
+      .calendar-popup {
+    display: none;
+    background-color: #4c4c4c;
+    color: #929292;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 30px; /* Increase padding for more internal space */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    max-width: 600px; /* Increase max-width */
+    width: 90%; /* Set a percentage to make it responsive */
+    min-height: 300px; /* Optional - add a minimum height */
+}
 
         .calendar-popup ul {
             list-style-type: none;
