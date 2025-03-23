@@ -41,20 +41,20 @@
             padding: 20px;
             box-sizing: border-box;
         }
+.video-item {
+    margin-bottom: 30px;
+    text-align: center;
+}
 
-        .video-item {
-            margin-bottom: 30px;
-            text-align: center;
-        }
+.poster, .video-item img {
+    width: 70%; /* Adjust percentage as needed */
+    height: auto; /* Keeps aspect ratio */
+    cursor: pointer;
+    max-width: 300px; /* Limits maximum size */
+    border-radius: 5px;
+}
 
-        .poster, .video-item img {
-            width: 100%;
-            height: auto;
-            object-fit: cover;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-
+       
         video {
             width: 100%;
             height: auto;
