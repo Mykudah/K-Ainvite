@@ -243,11 +243,22 @@
         </ul>
         <button id="calendar-button" class="select-button" onclick="closeCalendar()">Close</button>
   
-    </div>
-    <div class="video-item">
-    <img src="IMG_5202.jpeg"alt="Gurukul Celebration" class="poster" />
+<div class="video-item">
+    <video
+        id="jaimalVideo"
+        width="640"
+        height="360"
+        poster="IMG_5202.jpeg"
+        onclick="this.play(); this.setAttribute('controls', '');"
+        playsinline
+        style="cursor: pointer;"
+    >
+        <source src="jaimal.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
     <p class="video-caption">
-        9th May 2025. A special moment for  Kalpana and Anand's 60 th:<br> The bride and groom exchange Jaimal.
+        9th May 2025. A special moment for Kalpana and Anand's 60th:<br>
+        The bride and groom exchange Jaimal.
         <br>
         <a href="Jamal/Animal.html" target="_blank" style="color: #929292; text-decoration: underline;">See more from the "Wedding"</a>
     </p>
